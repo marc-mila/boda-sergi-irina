@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invitación de Boda</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <!-- Estilos personalizados -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+    .bg-hero {
+      background-image: url('https://images.unsplash.com/photo-1521702814095-51f9d338ce62?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+  
+</head>
+<body class="relative min-h-screen bg-[#f1d7be] flex flex-col items-center">
+
+    <!-- 🔝 Header -->
+<header class="w-full text-center py-6 bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-40">
+  <h1 class="text-3xl font-serif text-pink-700">Irina & Sergi</h1>
+  <p class="text-sm text-gray-600">06 de Junio de 2026 - Sant Pau d'Ordal</p>
+</header>
+
+
+  <!-- 🎵 Música de fondo -->
+  <audio id="bg-music" src="music.mp3" loop autoplay></audio>
+  <button id="toggleMusic"
+    class="fixed bottom-4 right-4 bg-pink-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition z-50">
+    🔊 Música
+  </button>
+
+
+  <br/>
+  <!-- 🎉 Tarjeta principal -->
+  <div class="backdrop-blur-md bg-white/70 max-w-xl w-full rounded-3xl shadow-2xl p-8 text-center space-y-6">
+    <h1 class="text-5xl text-pink-700">¡Nos Casamos!</h1>
+    <p class="text-lg">Acompáñanos a celebrar el amor de <strong>Irina & Sergi</strong></p>
+
+    <div class="text-sm text-gray-600">
+      <p>📅 <strong>06 de Junio de 2026</strong></p>
+      <p>📍 <strong>Can Vidal Rural, Sant Pau d'Ordal</strong></p>
+    </div>
+
+    <!-- ⏳ Cuenta atrás -->
+<div class="max-w-xl w-full mt-10 text-center">
+  <h2 class="text-2xl text-pink-600 font-bold mb-2">¡Nos casamos en…!</h2>
+  <div id="countdown" class="flex justify-center gap-6 text-pink-600 text-lg font-semibold">
+    <div class="flex flex-col items-center">
+      <span id="days" class="text-3xl font-bold">00</span>
+      <span class="text-sm">días</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="hours" class="text-3xl font-bold">00</span>
+      <span class="text-sm">horas</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="minutes" class="text-3xl font-bold">00</span>
+      <span class="text-sm">minutos</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="seconds" class="text-3xl font-bold">00</span>
+      <span class="text-sm">segundos</span>
+    </div>
+  </div>
+</div>
+
+    <form id="rsvpForm" class="space-y-4 text-left">
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 transition" />
+
+      <select id="asistencia" name="asistencia" required
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 transition">
+        <option value="">¿Asistirás?</option>
+        <option value="Sí, asistiré">Sí, con gusto</option>
+        <option value="No podré asistir">Lo siento, no podré</option>
+      </select>
+
+      <button type="submit"
+        class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
+        Confirmar asistencia
+      </button>
+    </form>
+
+    <div id="respuesta" class="text-center font-medium text-green-600 mt-2"></div>
+  </div>
+
+<!-- 🗺️ Mapa del lugar -->
+<div class="max-w-xl w-full mt-10">
+  <h2 class="text-2xl text-pink-700 font-bold mb-2 text-center">¿Dónde es?</h2>
+  <iframe
+    class="w-full h-64 rounded-2xl shadow-md"
+    frameborder="0"
+    style="border:0"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.9329402711577!2d1.812778!3d41.4038793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a58e4a5a8a20e3%3A0x173c6b4aa5e2047a!2sCan%20Vidal%20Rural!5e0!3m2!1ses!2ses!4v1690000000000"
+    allowfullscreen>
+  </iframe>
+</div>
+
+
+
+<!-- 📸 Galería rotativa con controles -->
+<div class="max-w-xl w-full mt-10 text-center">
+  <h2 class="text-2xl text-pink-700 font-bold mb-2">Nuestra historia en imágenes</h2>
+  <div class="relative w-full h-64 overflow-hidden rounded-2xl shadow-lg">
+    <img id="gallery-image" src="fotos/1.jpg" alt="Foto pareja" class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+  </div>
+  <!-- 🔘 Indicadores -->
+  <div id="gallery-dots" class="flex justify-center space-x-2 mt-4">
+    <!-- Los puntitos se generan dinámicamente -->
+  </div>
+</div>
+
+<!-- 📋 Sección centrada con Spotify y Dress Code -->
+<div class="w-full flex flex-col items-center gap-6 px-4 mt-10">
+
+  <!-- 🎶 Playlist colaborativa de Spotify -->
+  <div class="max-w-xl w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+    <h3 class="text-xl font-bold text-pink-700 mb-2">¡Ayúdanos a crear la Playlist de la Boda! 🎵</h3>
+    <p class="text-gray-700 mb-4">
+      Haz clic abajo para añadir tus canciones favoritas a nuestra playlist colaborativa en Spotify.
+    </p>
+
+    <a href="https://open.spotify.com/playlist/TU_PLAYLIST_ID" 
+       target="_blank" 
+       class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full shadow-md font-semibold transition">
+      ➕ Agregar canciones en Spotify
+    </a>
+
+  </div>
+
+  <!-- 👗 Dress code -->
+  <div class="max-w-xl w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
+    <h3 class="text-xl font-bold text-pink-700">Dress Code 👗👔</h3>
+    <p class="text-gray-700">
+      Nos gustaría que vinieras con un <strong>look elegante pero cómodo</strong>, con tonos neutros o pastel. 
+    </p>
+    <ul class="list-disc list-inside text-gray-600 text-left">
+      <li>Evita el blanco (¡es para la novia!)</li>
+      <li>Zapatos cómodos para el baile 💃</li>
+      <li>Si hace fresco, trae una chaqueta ligera</li>
+    </ul>
+  </div>
+
+</div>
+
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "xmHngdMD5u5eKdNxT",
+      });
+   })();
+</script>
+
+<!-- 🔚 Footer -->
+<footer class="mt-20 w-full text-center text-sm text-gray-500 py-6 bg-white/60 backdrop-blur-md">
+  <p>Gracias por acompañarnos en este día tan especial 💕</p>
+  <p class="mt-1">© Irina & Sergi, 2025</p>
+</footer>
+
+</body>
+</html>
