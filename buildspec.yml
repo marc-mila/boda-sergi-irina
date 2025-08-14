@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Iniciando despliegue de la web de boda..."
+      - aws --version
+  build:
+    commands:
+      - echo "Desplegando archivos a S3..."
+      - aws s3 sync . s3://boda-sergi.irina --delete --exact-timestamps --exclude ".git/*" --exclude "buildspec.yml"
+  post_build:
+    commands:
+      - echo "¡Despliegue completado con éxito!"
+artifacts:
+  files:
+    - '**/*'
