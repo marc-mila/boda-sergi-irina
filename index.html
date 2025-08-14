@@ -14,6 +14,8 @@
   <!-- EmailJS SDK -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
+  <link rel="stylesheet" href="styles.css">
+
   <!-- Estilos personalizados -->
   <style>
     body {
@@ -32,11 +34,6 @@
 </head>
 <body class="relative min-h-screen bg-[#f1d7be] flex flex-col items-center">
 
-    <!-- 🔝 Header -->
-<header class="w-full text-center py-6 bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-40">
-  <h1 class="text-3xl font-serif text-pink-700">Irina & Sergi</h1>
-  <p class="text-sm text-gray-600">06 de Junio de 2026 - Sant Pau d'Ordal</p>
-</header>
 
 
   <!-- 🎵 Música de fondo -->
@@ -48,10 +45,27 @@
 
 
   <br/>
+
+ <div class="flex flex-col items-center gap-8">
+  
+  <!-- Love Card -->
+  <div class="love-card w-full max-w-[1400px]">
+    <div class="love-card__image">
+        <img src="fotos/foto-pareja.jpg" alt="Pareja besándose" class="w-full rounded-xl">
+    </div>
+    <div class="love-card__content text-center mt-4">
+        <h1>
+            <span class="name">Andrea</span>
+            <span class="ampersand">&amp;</span>
+            <span class="name">Sergi</span>
+        </h1>
+    </div>
+  </div>
+
   <!-- 🎉 Tarjeta principal -->
-  <div class="backdrop-blur-md bg-white/70 max-w-xl w-full rounded-3xl shadow-2xl p-8 text-center space-y-6">
-    <h1 class="text-5xl text-pink-700">¡Nos Casamos!</h1>
-    <p class="text-lg">Acompáñanos a celebrar el amor de <strong>Irina & Sergi</strong></p>
+  <div style="background-color: #faf7f3;" class="w-full max-w-[1400px] backdrop-blur-md p-8 text-center space-y-6 rounded-xl">
+    <h1 class="text-5xl text-[#dcbf6c]">¡Nos Casamos!</h1>
+    <p class="text-lg">Acompáñanos a celebrar el amor de <strong>Andrea & Sergi</strong></p>
 
     <div class="text-sm text-gray-600">
       <p>📅 <strong>06 de Junio de 2026</strong></p>
@@ -59,27 +73,27 @@
     </div>
 
     <!-- ⏳ Cuenta atrás -->
-<div class="max-w-xl w-full mt-10 text-center">
-  <h2 class="text-2xl text-pink-600 font-bold mb-2">¡Nos casamos en…!</h2>
-  <div id="countdown" class="flex justify-center gap-6 text-pink-600 text-lg font-semibold">
-    <div class="flex flex-col items-center">
-      <span id="days" class="text-3xl font-bold">00</span>
-      <span class="text-sm">días</span>
+    <div class="w-full mt-10 text-center">
+      <h2 class="text-2xl text-[#dcbf6c] font-bold mb-2">¡Faltan...!</h2>
+      <div id="countdown" class="flex justify-center gap-6 text-[#dcbf6c] text-lg font-semibold">
+        <div class="flex flex-col items-center">
+          <span id="days" class="text-3xl font-bold">00</span>
+          <span class="text-sm">días</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="hours" class="text-3xl font-bold">00</span>
+          <span class="text-sm">horas</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="minutes" class="text-3xl font-bold">00</span>
+          <span class="text-sm">minutos</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="seconds" class="text-3xl font-bold">00</span>
+          <span class="text-sm">segundos</span>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col items-center">
-      <span id="hours" class="text-3xl font-bold">00</span>
-      <span class="text-sm">horas</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <span id="minutes" class="text-3xl font-bold">00</span>
-      <span class="text-sm">minutos</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <span id="seconds" class="text-3xl font-bold">00</span>
-      <span class="text-sm">segundos</span>
-    </div>
-  </div>
-</div>
 
     <form id="rsvpForm" class="space-y-4 text-left">
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required
@@ -93,13 +107,15 @@
       </select>
 
       <button type="submit"
-        class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
+        class="text-[#dcbf6c] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
         Confirmar asistencia
       </button>
     </form>
 
     <div id="respuesta" class="text-center font-medium text-green-600 mt-2"></div>
   </div>
+</div>
+
 
 <!-- 🗺️ Mapa del lugar -->
 <div class="max-w-xl w-full mt-10">
@@ -176,7 +192,7 @@
 <!-- 🔚 Footer -->
 <footer class="mt-20 w-full text-center text-sm text-gray-500 py-6 bg-white/60 backdrop-blur-md">
   <p>Gracias por acompañarnos en este día tan especial 💕</p>
-  <p class="mt-1">© Irina & Sergi, 2025</p>
+  <p class="mt-1">© Andrea & Sergi, 2025</p>
 </footer>
 
 </body>
