@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación de Boda</title>
+  <title>Invitación de Boda de Andrea y Sergi</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet" />
@@ -38,8 +38,8 @@
 
   <!-- 🎵 Música de fondo -->
   <audio id="bg-music" src="music.mp3" loop autoplay></audio>
-  <button id="toggleMusic"
-    class="fixed bottom-4 right-4 bg-pink-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition z-50">
+  <button id="toggleMusic" style="background-color:#2c3e50"
+    class="fixed bottom-4 right-4 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition z-50">
     🔊 Música
   </button>
 
@@ -97,17 +97,18 @@
 
     <form id="rsvpForm" class="space-y-4 text-left">
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required
-        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 transition" />
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition" />
 
       <select id="asistencia" name="asistencia" required
-        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 transition">
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition">
         <option value="">¿Asistirás?</option>
-        <option value="Sí, asistiré">Sí, con gusto</option>
-        <option value="No podré asistir">Lo siento, no podré</option>
+        <option value="Sí, asistiré">Preparad@ para celebrar</option>
+        <option value="No podré asistir">Me sabe mal, no podré asistir</option>
       </select>
 
       <button type="submit"
-        class="text-[#dcbf6c] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
+        style="background-color: #dcbf6c;"
+        class="text-[#2c3e50] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
         Confirmar asistencia
       </button>
     </form>
@@ -118,8 +119,8 @@
 
 
 <!-- 🗺️ Mapa del lugar -->
-<div class="max-w-xl w-full mt-10">
-  <h2 class="text-2xl text-pink-700 font-bold mb-2 text-center">¿Dónde es?</h2>
+<div class="max-w-[1400px] w-full mt-10">
+  <h2 class="text-2xl text-[#2c3e50] font-bold mb-2 text-center">¿Dónde es?</h2>
   <iframe
     class="w-full h-64 rounded-2xl shadow-md"
     frameborder="0"
@@ -132,23 +133,33 @@
 
 
 <!-- 📸 Galería rotativa con controles -->
-<div class="max-w-xl w-full mt-10 text-center">
-  <h2 class="text-2xl text-pink-700 font-bold mb-2">Nuestra historia en imágenes</h2>
-  <div class="relative w-full h-64 overflow-hidden rounded-2xl shadow-lg">
-    <img id="gallery-image" src="fotos/1.jpg" alt="Foto pareja" class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+<div class="max-w-[1400px]  mt-10 text-center">
+  <h2 class="text-2xl text-[#2c3e50] font-bold mb-2">
+    Nuestra historia en imágenes
+  </h2>
+
+  <!-- Contenedor cuadrado y limitado -->
+  <div class="relative  max-w-md mx-auto aspect-square overflow-hidden rounded-2xl shadow-lg">
+    <img id="gallery-image"
+         src="fotos/1.jpg"
+         alt="Foto pareja"
+         class="w-full h-full object-cover transition-opacity duration-1000 opacity-100">
   </div>
+
   <!-- 🔘 Indicadores -->
   <div id="gallery-dots" class="flex justify-center space-x-2 mt-4">
     <!-- Los puntitos se generan dinámicamente -->
   </div>
 </div>
 
+
+
 <!-- 📋 Sección centrada con Spotify y Dress Code -->
-<div class="w-full flex flex-col items-center gap-6 px-4 mt-10">
+<div class="max-w-[1400px] w-full flex flex-col items-center gap-6 px-4 mt-10">
 
   <!-- 🎶 Playlist colaborativa de Spotify -->
-  <div class="max-w-xl w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-    <h3 class="text-xl font-bold text-pink-700 mb-2">¡Ayúdanos a crear la Playlist de la Boda! 🎵</h3>
+  <div class="w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+    <h3 class="text-xl font-bold  text-[#2c3e50] mb-2">¡Ayúdanos a crear la Playlist de la Boda! 🎵</h3>
     <p class="text-gray-700 mb-4">
       Haz clic eln el link para añadir tus canciones favoritas a nuestra playlist colaborativa en Spotify.
     </p>
@@ -162,15 +173,28 @@
   </div>
 
   <!-- 👗 Dress code -->
-  <div class="max-w-xl w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
-    <h3 class="text-xl font-bold text-pink-700">Dress Code 👗👔</h3>
+  <div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
+    <h3 class="text-xl font-bold  text-[#2c3e50]">Dress Code 👗👔</h3>
     <p class="text-gray-700">
       Nos gustaría que vinieras con un <strong>look elegante pero cómodo</strong>, con tonos neutros o pastel. 
     </p>
-    <ul class="list-disc list-inside text-gray-600 text-left">
+    <ul class="list-disc list-inside text-gray-600 text-center">
       <li>Evita el blanco (¡es para la novia!)</li>
       <li>Zapatos cómodos para el baile 💃</li>
       <li>Si hace fresco, trae una chaqueta ligera</li>
+    </ul>
+  </div>
+
+    <!-- 👗 Regalos -->
+  <div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
+    <h3 class="text-xl font-bold  text-[#2c3e50]">Detalles 🎁</h3>
+    <p class="text-gray-700">
+      Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> Si quereis ayudarnos, aquí teneis nuestros datos 
+    </p>
+    <ul class="list-disc list-inside text-gray-600 text-center">
+      <li>Bizum</li>
+      <li>IBAN</li>
+      <li>Paypal</li>
     </ul>
   </div>
 
@@ -189,11 +213,11 @@
    })();
 </script>
 
-<!-- 🔚 Footer -->
-<footer class="mt-20 w-full text-center text-sm text-gray-500 py-6 bg-white/60 backdrop-blur-md">
+<footer style="border-radius: 15px;" class="mt-20 w-full text-center text-sm text-gray-500 py-6 bg-white/60 backdrop-blur-md">
   <p>Gracias por acompañarnos en este día tan especial 💕</p>
   <p class="mt-1">© Andrea & Sergi, 2025</p>
 </footer>
 
-</body>
+</body><!-- 🔚 Footer -->
+
 </html>
