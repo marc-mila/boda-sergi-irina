@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación de Boda de Andrea y Sergi</title>
+  <title data-i18n="title">Invitación de Boda de Andrea y Sergi</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet" />
@@ -34,11 +34,14 @@
 </head>
 <body class="relative min-h-screen bg-[#f1d7be] flex flex-col items-center px-4 py-8">
 
-
+<div class="lang-switcher">
+      <img src="banderas/ca.svg" alt="Català" data-lang="ca">
+    <img src="banderas/es.svg" alt="Castellano" data-lang="es">
+</div>
 
   <!-- 🎵 Música de fondo -->
   <audio id="bg-music" src="music.mp3" loop autoplay></audio>
-  <button id="toggleMusic" style="background-color:#2c3e50"
+  <button id="toggleMusic" style="background-color:#2c3e50" data-i18n="music"
     class="fixed bottom-4 right-4 text-white px-4 py-2 rounded-full shadow-md hover:bg-pink-700 transition z-50">
     🔊 Música
   </button>
@@ -64,49 +67,49 @@
 
   <!-- 🎉 Tarjeta principal -->
   <div style="background-color: #faf7f3;" class="w-full max-w-[1400px] backdrop-blur-md p-8 text-center space-y-6 rounded-xl">
-    <h1 class="text-5xl text-[#dcbf6c]">¡Nos Casamos!</h1>
-    <p class="text-lg">Acompáñanos a celebrar el amor de <strong>Andrea & Sergi</strong></p>
+    <h1 data-i18n="weMarry" class="text-5xl text-[#dcbf6c]">¡Nos Casamos!</h1>
+    <p data-i18n="joinUs" class="text-lg">Acompáñanos a celebrar el amor de <strong>Andrea & Sergi</strong></p>
 
     <div class="text-sm text-gray-600">
-      <p>📅 <strong>06 de Junio de 2026</strong></p>
-      <p>📍 <strong>Can Vidal Rural, Sant Pau d'Ordal</strong></p>
+      <p data-i18n="date">📅 <strong>06 de Junio de 2026</strong></p>
+      <p data-i18n="place">📍 <strong>Can Vidal Rural, Sant Pau d'Ordal</strong></p>
     </div>
 
     <!-- ⏳ Cuenta atrás -->
     <div class="w-full mt-10 text-center">
-      <h2 class="text-2xl text-[#dcbf6c] font-bold mb-2">¡Faltan...!</h2>
+      <h2 data-i18n="countdownTitle" class="text-2xl text-[#dcbf6c] font-bold mb-2">¡Faltan...!</h2>
       <div id="countdown" class="flex justify-center gap-6 text-[#dcbf6c] text-lg font-semibold">
         <div class="flex flex-col items-center">
           <span id="days" class="text-3xl font-bold">00</span>
-          <span class="text-sm">días</span>
+          <span class="text-sm" data-i18n="days">días</span>
         </div>
         <div class="flex flex-col items-center">
           <span id="hours" class="text-3xl font-bold">00</span>
-          <span class="text-sm">horas</span>
+          <span class="text-sm" data-i18n="hours">horas</span>
         </div>
         <div class="flex flex-col items-center">
           <span id="minutes" class="text-3xl font-bold">00</span>
-          <span class="text-sm">minutos</span>
+          <span class="text-sm" data-i18n="minutes">minutos</span>
         </div>
         <div class="flex flex-col items-center">
           <span id="seconds" class="text-3xl font-bold">00</span>
-          <span class="text-sm">segundos</span>
+          <span class="text-sm" data-i18n="seconds">segundos</span>
         </div>
       </div>
     </div>
 
     <form id="rsvpForm" class="space-y-4 text-left">
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required
+      <input type="text" data-i18n="yourName" id="nombre" name="nombre" placeholder="" data-i18n-placeholder="yourName" required
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition" />
 
       <select id="asistencia" name="asistencia" required
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition">
-        <option value="">¿Asistirás?</option>
-        <option value="Sí, asistiré">Preparad@ para celebrar</option>
-        <option value="No podré asistir">Me sabe mal, no podré asistir</option>
+        <option data-i18n="willAttendQ" value="">¿Asistirás?</option>
+        <option data-i18n="yesAttend" value="Sí, asistiré">Preparad@ para celebrar</option>
+        <option data-i18n="noAttend" value="No podré asistir">Me sabe mal, no podré asistir</option>
       </select>
 
-      <button type="submit"
+      <button type="submit" data-i18n="confirm"
         style="background-color: #dcbf6c;"
         class="text-[#2c3e50] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
         Confirmar asistencia
@@ -120,7 +123,7 @@
 
 <!-- 🗺️ Mapa del lugar -->
 <div class="max-w-[1400px] w-full mt-10">
-  <h2 class="text-2xl text-[#2c3e50] font-bold mb-2 text-center">¿Dónde es?</h2>
+  <h2 data-i18n="where" class="text-2xl text-[#2c3e50] font-bold mb-2 text-center">¿Dónde es?</h2>
   <iframe
     class="w-full h-64 rounded-2xl shadow-md"
     frameborder="0"
@@ -134,7 +137,7 @@
 
 <!-- 📸 Galería rotativa con controles -->
 <div class="max-w-[1400px]  mt-10 text-center">
-  <h2 class="text-2xl text-[#2c3e50] font-bold mb-2">
+  <h2 data-i18n="gallery" class="text-2xl text-[#2c3e50] font-bold mb-2">
     Nuestra historia en imágenes
   </h2>
 
@@ -155,16 +158,16 @@
 
 
 <!-- 📋 Sección centrada con Spotify y Dress Code -->
-<div class="max-w-[1400px] w-full flex flex-col items-center gap-6 px-4 mt-10">
+<div class="max-w-[1400px] w-full flex flex-col items-center gap-6 mt-10">
 
   <!-- 🎶 Playlist colaborativa de Spotify -->
   <div class="w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-    <h3 class="text-xl font-bold  text-[#2c3e50] mb-2">¡Ayúdanos a crear la Playlist de la Boda! 🎵</h3>
-    <p class="text-gray-700 mb-4">
-      Haz clic eln el link para añadir tus canciones favoritas a nuestra playlist colaborativa en Spotify.
+    <h3 data-i18n="playlistTitle" class="text-xl font-bold  text-[#2c3e50] mb-2">¡Ayúdanos a crear la Playlist de la Boda! 🎵</h3>
+    <p data-i18n="playlistText" class="text-gray-700 mb-4">
+      Haz clic en el link para añadir tus canciones favoritas a nuestra playlist colaborativa en Spotify.
     </p>
 
-    <a href="https://open.spotify.com/playlist/2J9e1xmh79qkXJZRVg54pw?si=XTy34nDuQ2qj8PjXYxg4lw" 
+    <a data-i18n="playlistBtn" href="https://open.spotify.com/playlist/2J9e1xmh79qkXJZRVg54pw?si=XTy34nDuQ2qj8PjXYxg4lw" 
        target="_blank" 
        class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full shadow-md font-semibold transition">
       ➕ Agregar canciones en Spotify
@@ -174,22 +177,22 @@
 
   <!-- 👗 Dress code -->
   <div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
-    <h3 class="text-xl font-bold  text-[#2c3e50]">Dress Code 👗👔</h3>
-    <p class="text-gray-700">
+    <h3 data-i18n="dressTitle" class="text-xl font-bold  text-[#2c3e50]">Dress Code 👗👔</h3>
+    <p data-i18n="dressText" class="text-gray-700">
       Nos gustaría que vinieras con un <strong>look elegante pero cómodo</strong>, con tonos neutros o pastel. 
     </p>
     <ul class="list-disc list-inside text-gray-600 text-center">
-      <li>Evita el blanco (¡es para la novia!)</li>
-      <li>Zapatos cómodos para el baile 💃</li>
-      <li>Si hace fresco, trae una chaqueta ligera</li>
+      <li data-i18n="dress1">Evita el blanco (¡es para la novia!)</li>
+      <li data-i18n="dress2">Zapatos cómodos para el baile 💃</li>
+      <li data-i18n="dress3">Si hace fresco, trae una chaqueta ligera</li>
     </ul>
   </div>
 
     <!-- 👗 Regalos -->
   <div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
-    <h3 class="text-xl font-bold  text-[#2c3e50]">Detalles 🎁</h3>
-    <p class="text-gray-700">
-      Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> Si quereis ayudarnos, aquí teneis nuestros datos 
+    <h3 data-i18n="giftsTitle" class="text-xl font-bold  text-[#2c3e50]">Detalles 🎁</h3>
+    <p data-i18n="giftsText" class="text-gray-700">
+      Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> Si quereis ayudarnos, aquí teneis nuestros datos
     </p>
     <ul class="list-disc list-inside text-gray-600 text-center">
       <li>Bizum</li>
@@ -214,9 +217,14 @@
 </script>
 
 <footer style="border-radius: 15px;" class="mt-20 w-full text-center text-sm text-gray-500 py-6 bg-white/60 backdrop-blur-md">
-  <p>Gracias por acompañarnos en este día tan especial 💕</p>
-  <p class="mt-1">© Andrea & Sergi, 2025</p>
+  <p data-i18n="footerThanks">Gracias por acompañarnos en este día tan especial 💕</p>
+  <p class="mt-1">© Andrea & Sergi, <span id="year"></span></p>
+
+  <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </footer>
+
 
 </body><!-- 🔚 Footer -->
 
