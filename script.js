@@ -34,7 +34,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
 const bgMusic = document.getElementById("bg-music");
 const toggleMusicBtn = document.getElementById("toggleMusic");
 
-let isPlaying = true;
+let isPlaying = false;
 
 toggleMusicBtn.addEventListener("click", () => {
   if (isPlaying) {
@@ -65,7 +65,7 @@ galleryImages.forEach((_, index) => {
   dot.style.backgroundColor = '#2c3e50'; 
   if (index === 0){
     dot.classList.add('scale-125', 'bg-pink-700');
-    dot.style.backgroundColor = '#dcbf6c';
+    dot.style.backgroundColor = '#a87d3e';
   }
   dot.setAttribute('data-index', index);
   dotsContainer.appendChild(dot);
@@ -77,7 +77,7 @@ function updateDots(index) {
     dot.className = 'w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-500 transition-colors';
     if (i === index) {
       dot.classList.add('scale-125', 'bg-pink-700');
-      dot.style.backgroundColor = '#dcbf6c';
+      dot.style.backgroundColor = '#a87d3e';
     }
     else{
       dot.classList.remove('scale-125', 'bg-pink-700');
@@ -168,14 +168,33 @@ window.addEventListener("DOMContentLoaded", () => {
     changeLanguage(savedLang);
 });
 
+const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("giftModal");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Cerrar modal al hacer clic fuera del contenido
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+
 const translations = {
   es: {
     title: "Invitación de Boda de Andrea y Sergi",
-    music: "🔊 Música",
+    music: "🔇 Música",
     weMarry: "¡Nos Casamos!",
     joinUs: "Acompáñanos a celebrar el amor de <strong>Andrea & Sergi</strong>",
-    date: "06 de Junio de 2026",
-    place: "Can Vidal Rural, Sant Pau d'Ordal",
+    date: "📅 06 de Junio de 2026",
+    place: "📍 Can Vidal Rural, Sant Pau d'Ordal",
     countdownTitle: "¡Faltan...!",
     days: "días", hours: "horas", minutes: "minutos", seconds: "segundos",
     yourName: "Tu nombre",
@@ -187,23 +206,32 @@ const translations = {
     gallery: "Nuestra historia en imágenes",
     playlistTitle: "¡Ayúdanos a crear la Playlist de la Boda! 🎵",
     playlistText: "Haz clic en el link para añadir tus canciones favoritas a nuestra playlist colaborativa en Spotify.",
-    playlistBtn: "➕ Agregar canciones en Spotify",
+    playlistBtn: "Spotify",
     dressTitle: "Dress Code 👗👔",
-    dressText: "Nos gustaría que vinieras con un <strong>look elegante pero cómodo</strong>, con tonos neutros o pastel.",
+    dressText: "Nos gustaría que vinieras con un <strong>look elegante pero cómodo</strong>, con vibes primaverales ☀️🌴.",
     dress1: "Evita el blanco (¡es para la novia!)",
     dress2: "Zapatos cómodos para el baile 💃",
     dress3: "Si hace fresco, trae una chaqueta ligera",
+    sleep: "¿Te quieres a quedar a dormir?",
+    sleep1: "Si te quedas, tenemos una sorpresita para ti...",
+    sleep2: "Te llegará un correo para confirmar tu estancia.",
+    willSleepQ: "¿Te quedarás a dormir? 💤🏕️",
+    yesSleep: "Me quedaré a dormir",
+    noSleep: "No me quedaré a dormir",
     giftsTitle: "Detalles 🎁",
     giftsText: "Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> Si queréis ayudarnos, aquí tenéis nuestros datos",
+    giftsDetails: "Formas de regalar",
+    infoText: "📞 Si tienes dudas, necesitas más información o quieres contactarnos sobre alguna alergia o intolerancia, contáctanos a los siguientes telefonos",
+    contactInfo: "🤵🏻: 661109275 / 👰🏼‍♀️: 658197440",
     footerThanks: "Gracias por acompañarnos en este día tan especial 💕",
   },
   ca: {
     title: "Invitació de Casament d'Andrea i Sergi",
-    music: "🔊 Música",
+    music: "🔇 Música",
     weMarry: "Ens casem!",
     joinUs: "Acompanya'ns a celebrar l'amor de <strong>Andrea & Sergi</strong>",
-    date: "06 de Juny de 2026",
-    place: "Can Vidal Rural, Sant Pau d'Ordal",
+    date: "📅 06 de Juny de 2026",
+    place: "📍 Can Vidal Rural, Sant Pau d'Ordal",
     countdownTitle: "Falten...!",
     days: "dies", hours: "hores", minutes: "minuts", seconds: "segons",
     yourName: "El teu nom",
@@ -215,14 +243,23 @@ const translations = {
     gallery: "La nostra història en imatges",
     playlistTitle: "Ajuda'ns a crear la Playlist del Casament! 🎵",
     playlistText: "Fes clic a l'enllaç per afegir les teves cançons preferides a la nostra playlist col·laborativa a Spotify.",
-    playlistBtn: "➕ Afegir cançons a Spotify",
+    playlistBtn: "Spotify",
     dressTitle: "Dress Code 👗👔",
-    dressText: "Ens agradaria que vinguessis amb un <strong>look elegant però còmode</strong>, amb tons neutres o pastel.",
+    dressText: "Ens agradaria que vinguessis amb un <strong>look elegant però còmode</strong>, amb vibes primaverals ☀️🌴.",
     dress1: "Evita el blanc (és per a la núvia!)",
-    dress2: "Sabates còmodes per al ball 💃",
+    dress2: "Sabates còmodes pel ball 💃",
     dress3: "Si refresca, porta una jaqueta lleugera",
+    sleepTitle: "Vols quedar-te a dormir? 💤🏕️",
+    sleep1: "Si et quedes, tenim una sorpreseta per a tu...",
+    sleep2: "T'arribarà un correu per confirmar la teva estada.",
+    willSleepQ: "¿Et quedaràs a dormir?",
+    yesSleep: "Em quedaré a dormir",
+    noSleep: "No em quedaré a dormir",
     giftsTitle: "Detalls 🎁",
     giftsText: "Tenim la casa plena de coses... <strong>però ens falten somnis per complir!</strong> Si ens voleu ajudar, aquí teniu les nostres dades",
+    giftsDetails: "Formes de regalar",
+    infoText: "📞 Si tens dubtes, necessites més informació o vols contactar-nos sobre alguna al·lèrgia o intolerància, contacta'ns als següents telèfons",
+    contactInfo: "🤵🏻: 661109275 / 👰🏼‍♀️: 658197440",
     footerThanks: "Gràcies per acompanyar-nos en aquest dia tan especial 💕",
   }
 };

@@ -45,18 +45,20 @@
     object-fit: cover;
 }
 
-/* Contenido */
 .love-card__content {
     flex: 1 1 50%;
     padding: 40px;
+    display: flex;           /* Esto es clave para activar Flexbox */
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centrado vertical */
+    align-items: center;     /* Centrado horizontal */
     background: #fdfaf6;
+    text-align: center;      /* Para texto multilinea */
 }
 
 .love-card__content .date {
     background: #fff;
-    border: 1px solid #dcbf6c;
+    border: 1px solid #a87d3e;
     color: #555;
     font-size: 14px;
     padding: 5px 12px;
@@ -73,7 +75,7 @@
 }
 
 .love-card__content .ampersand {
-    color: #dcbf6c;
+    color: #a87d3e;
     font-size: 2.5rem;
     margin: 0 8px;
 }

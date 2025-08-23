@@ -32,7 +32,7 @@
   </style>
   
 </head>
-<body class="relative min-h-screen bg-[#f1d7be] flex flex-col items-center px-4 py-8">
+<body class="relative min-h-screen bg-[#cdbe97] flex flex-col items-center px-4 py-8">
 
 <div class="lang-switcher">
       <img src="banderas/ca.svg" alt="Català" data-lang="ca">
@@ -67,7 +67,7 @@
 
   <!-- 🎉 Tarjeta principal -->
   <div style="background-color: #faf7f3;" class="w-full max-w-[1400px] backdrop-blur-md p-8 text-center space-y-6 rounded-xl">
-    <h1 data-i18n="weMarry" class="text-5xl text-[#dcbf6c]">¡Nos Casamos!</h1>
+    <h1 data-i18n="weMarry" class="text-5xl text-[#a87d3e]">¡Nos Casamos!</h1>
     <p data-i18n="joinUs" class="text-lg">Acompáñanos a celebrar el amor de <strong>Andrea & Sergi</strong></p>
 
     <div class="text-sm text-gray-600">
@@ -77,8 +77,8 @@
 
     <!-- ⏳ Cuenta atrás -->
     <div class="w-full mt-10 text-center">
-      <h2 data-i18n="countdownTitle" class="text-2xl text-[#dcbf6c] font-bold mb-2">¡Faltan...!</h2>
-      <div id="countdown" class="flex justify-center gap-6 text-[#dcbf6c] text-lg font-semibold">
+      <h2 data-i18n="countdownTitle" class="text-2xl text-[#a87d3e] font-bold mb-2">¡Faltan...!</h2>
+      <div id="countdown" class="flex justify-center gap-6 text-[#a87d3e] text-lg font-semibold">
         <div class="flex flex-col items-center">
           <span id="days" class="text-3xl font-bold">00</span>
           <span class="text-sm" data-i18n="days">días</span>
@@ -103,15 +103,15 @@
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition" />
 
       <select id="asistencia" name="asistencia" required
-        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition">
+    class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#dcbf6c] transition appearance-none bg-white pr-10">
         <option data-i18n="willAttendQ" value="">¿Asistirás?</option>
         <option data-i18n="yesAttend" value="Sí, asistiré">Preparad@ para celebrar</option>
         <option data-i18n="noAttend" value="No podré asistir">Me sabe mal, no podré asistir</option>
       </select>
 
       <button type="submit" data-i18n="confirm"
-        style="background-color: #dcbf6c;"
-        class="text-[#2c3e50] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
+        style="background-color: #a87d3e;"
+        class="text-[#ffffff] hover:text-[#dcbf6c] px-6 py-3 rounded-full shadow-lg transition duration-300 w-full font-semibold">
         Confirmar asistencia
       </button>
     </form>
@@ -188,18 +188,95 @@
     </ul>
   </div>
 
-    <!-- 👗 Regalos -->
+<!-- 👗 Dormir -->
+<div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
+  <h3 data-i18n="sleepTitle" class="text-xl font-bold  text-[#2c3e50]">Dormir 😴</h3>
+  <ul class="list-disc list-inside text-gray-600 text-center">
+    <li data-i18n="sleep1">Si te quedas, tenemos una sorpresita para ti...</li>
+    <li data-i18n="sleep2">Te llegará un correo para confirmar tu estancia.</li>
+  </ul>
+  <select id="dormir" name="dormir" required
+      class="p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:[#dcbf6c] transition">
+      <option data-i18n="willSleepQ" value="">¿Asistirás?</option>
+      <option data-i18n="yesSleep" value="Sí, asistiré">Me quedaré a dormir</option>
+      <option data-i18n="noSleep" value="No podré asistir">No me quedaré a dormir</option>
+  </select>
+</div>
+
+<div class="w-full overflow-hidden leading-none my-5">
+  <svg width="100%" height="50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Patrón de puntos alternados -->
+    <pattern id="dots" x="0" y="0" width="40" height="50" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="25" r="3" fill="#a87d3e" />
+      <circle cx="30" cy="25" r="3" fill="#2c3e50" />
+    </pattern>
+  </defs>
+  
+  <!-- Puntos separadores -->
+  <rect x="0" y="0" width="100%" height="50" fill="url(#dots)" />
+</svg>
+
+</div>
+
+</div>
+
+<!-- 🎁 Detalles de regalos con modal -->
+<div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
+  <h3 data-i18n="giftsTitle" class="text-xl font-bold text-[#2c3e50]">Detalles 🎁</h3>
+  <p data-i18n="giftsText" class="text-gray-700">
+    Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> 
+    Si queréis ayudarnos, aquí tenéis nuestros datos
+  </p>
+
+  <!-- Botón para abrir modal -->
+  <button 
+    data-i18n="giftsDetails"
+    id="openModal" 
+    class="px-6 py-2 bg-[#2c3e50] text-white rounded-xl shadow hover:bg-[#34495e] transition">
+    Formes de regalar
+  </button>
+</div>
+
+<div class="w-full overflow-hidden leading-none my-5">
+  <svg width="100%" height="50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Patrón de puntos alternados -->
+    <pattern id="dots" x="0" y="0" width="40" height="50" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="25" r="3" fill="#a87d3e" />
+      <circle cx="30" cy="25" r="3" fill="#2c3e50" />
+    </pattern>
+  </defs>
+  
+  <!-- Puntos separadores -->
+  <rect x="0" y="0" width="100%" height="50" fill="url(#dots)" />
+</svg>
+
+</div>
+
+  <!-- 👗 Dress code -->
   <div class="max-w-[1400px] w-full bg-white/70 backdrop-blur-md rounded-2xl shadow-md p-6 space-y-4 text-center">
-    <h3 data-i18n="giftsTitle" class="text-xl font-bold  text-[#2c3e50]">Detalles 🎁</h3>
-    <p data-i18n="giftsText" class="text-gray-700">
-      Tenemos la casa llena de cosas... <strong>pero nos faltan sueños por cumplir!</strong> Si quereis ayudarnos, aquí teneis nuestros datos
+    <p data-i18n="infoText" class="text-gray-700">
+      Para más información, alergias, intolerancias o dudas, no dudes en contactarnos que os aclararemos todo lo que necesitéis.
     </p>
-    <ul class="list-disc list-inside text-gray-600 text-center">
+    <p data-i18n="contactInfo" class="text-gray-700">El novio: 661109275 / La novia: 658197440</p>
+  </div>
+<!-- Modal -->
+<div id="giftModal" class="fixed inset-0 hidden bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-lg p-6 max-w-md w-full relative">
+    <!-- Botón cerrar -->
+    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+      ✖
+    </button>
+
+    <h4 class="text-lg font-semibold text-[#2c3e50] mb-4">Formas de regalar 🎁</h4>
+    <ul class="list-disc list-inside text-gray-600 text-left space-y-2">
+      <li>ES48 0000 0000 000 000 0000 </li>
       <li>Bizum</li>
-      <li>IBAN</li>
-      <li>Paypal</li>
+      <li>Efectiu</li>
     </ul>
   </div>
+</div>
 
 </div>
 
