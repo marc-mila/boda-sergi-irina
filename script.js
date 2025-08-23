@@ -10,11 +10,14 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
 
   const nombre = document.getElementById("nombre").value;
   const asistencia = document.getElementById("asistencia").value;
+  const dormir = document.getElementById('dormir') ? document.getElementById('dormir').value : "";
+
   const respuesta = document.getElementById("respuesta");
 
   emailjs.send("service_7wbtrnq", "template_nnx2o8q", {
     nombre: nombre,
-    asistencia: asistencia
+    asistencia: asistencia,
+    dormir: dormir
   })
   .then(() => {
     respuesta.textContent = `¡Gracias, ${nombre}! Hemos recibido tu confirmación 💌`;
@@ -47,72 +50,108 @@ toggleMusicBtn.addEventListener("click", () => {
   isPlaying = !isPlaying;
 });
 
-// 🎞️ Galería rotativa automática
 const galleryImages = [
+  'fotos/1.jpg',
+  'fotos/2.jpg',
+  'fotos/3.jpg',
   'fotos/1.jpg',
   'fotos/2.jpg',
   'fotos/3.jpg'
 ];
 
-let currentImageIndex = 0;
-const galleryEl = document.getElementById('gallery-image');
+const galleryEls = document.querySelectorAll(".gallery-img");
 const dotsContainer = document.getElementById('gallery-dots');
+let currentIndex = 0;
+let slideInterval;
+
+// Número de imágenes visibles según pantalla
+function imagesPerSlide() {
+  return window.innerWidth < 768 ? 1 : 3;
+}
 
 // Crear los puntitos
-galleryImages.forEach((_, index) => {
-  const dot = document.createElement('button');
-  dot.className = 'w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-500 transition-colors';
-  dot.style.backgroundColor = '#2c3e50'; 
-  if (index === 0){
-    dot.classList.add('scale-125', 'bg-pink-700');
-    dot.style.backgroundColor = '#a87d3e';
+function createDots() {
+  dotsContainer.innerHTML = '';
+  const slides = galleryImages.length; // un dot por cada imagen de inicio
+  for (let i = 0; i < slides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'w-3 h-3 rounded-full transition-colors';
+    if (i === 0) {
+      dot.classList.add('scale-125', 'bg-pink-700');
+      dot.style.backgroundColor = '#a87d3e';
+    } else {
+      dot.style.backgroundColor = '#2c3e50';
+    }
+    dot.setAttribute('data-index', i);
+    dotsContainer.appendChild(dot);
   }
-  dot.setAttribute('data-index', index);
-  dotsContainer.appendChild(dot);
-});
+}
+
+createDots();
 
 // Actualizar puntitos
 function updateDots(index) {
   [...dotsContainer.children].forEach((dot, i) => {
-    dot.className = 'w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-500 transition-colors';
+    dot.className = 'w-3 h-3 rounded-full transition-colors';
     if (i === index) {
       dot.classList.add('scale-125', 'bg-pink-700');
       dot.style.backgroundColor = '#a87d3e';
-    }
-    else{
-      dot.classList.remove('scale-125', 'bg-pink-700');
+    } else {
       dot.style.backgroundColor = '#2c3e50';
     }
   });
 }
 
-// Cambiar imagen
-function showImage(index) {
-  galleryEl.classList.remove('opacity-100');
-  galleryEl.classList.add('opacity-0');
+// Mostrar imágenes según índice de inicio
+function showSlide(startIndex) {
+  const perSlide = imagesPerSlide();
+  for (let i = 0; i < perSlide; i++) {
+    const imgIndex = (startIndex + i) % galleryImages.length;
 
-  setTimeout(() => {
-    currentImageIndex = index;
-    galleryEl.src = galleryImages[currentImageIndex];
-    galleryEl.classList.remove('opacity-0');
-    galleryEl.classList.add('opacity-100');
-    updateDots(currentImageIndex);
-  }, 300);
+    galleryEls[i].classList.remove('opacity-100');
+    galleryEls[i].classList.add('opacity-0');
+
+    setTimeout(() => {
+      galleryEls[i].src = galleryImages[imgIndex];
+      galleryEls[i].classList.remove('opacity-0');
+      galleryEls[i].classList.add('opacity-100');
+    }, 300);
+  }
+
+  updateDots(startIndex);
+  currentIndex = startIndex;
+}
+
+// Iniciar el intervalo de rotación
+function startInterval() {
+  slideInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showSlide(currentIndex);
+  }, 5000);
 }
 
 // Clic en los puntitos
 dotsContainer.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const index = parseInt(e.target.getAttribute('data-index'));
-    showImage(index);
+    showSlide(index);
+
+    // Resetear el intervalo
+    clearInterval(slideInterval);
+    startInterval();
   }
 });
 
-// Rotación automática
-setInterval(() => {
-  let nextIndex = (currentImageIndex + 1) % galleryImages.length;
-  showImage(nextIndex);
-}, 5000);
+// Ajustar al cambiar tamaño de pantalla
+window.addEventListener('resize', () => {
+  createDots();
+  showSlide(currentIndex);
+});
+
+// Inicializar la galería
+showSlide(0);
+startInterval();
+
 
 // ⏳ Cuenta atrás para la boda
 function updateCountdown() {
@@ -212,10 +251,10 @@ const translations = {
     dress1: "Evita el blanco (¡es para la novia!)",
     dress2: "Zapatos cómodos para el baile 💃",
     dress3: "Si hace fresco, trae una chaqueta ligera",
-    sleep: "¿Te quieres a quedar a dormir?",
+    sleepTitle: "¿Quieres quedarte a dormir? 💤🏕️",
     sleep1: "Si te quedas, tenemos una sorpresita para ti...",
     sleep2: "Te llegará un correo para confirmar tu estancia.",
-    willSleepQ: "¿Te quedarás a dormir? 💤🏕️",
+    willSleepQ: "¿Te quedarás?",
     yesSleep: "Me quedaré a dormir",
     noSleep: "No me quedaré a dormir",
     giftsTitle: "Detalles 🎁",
@@ -253,7 +292,7 @@ const translations = {
     sleepTitle: "Vols quedar-te a dormir? 💤🏕️",
     sleep1: "Si et quedes, tenim una sorpreseta per a tu...",
     sleep2: "T'arribarà un correu per confirmar la teva estada.",
-    willSleepQ: "¿Et quedaràs a dormir?",
+    willSleepQ: "Et quedaràs?",
     yesSleep: "Em quedaré a dormir",
     noSleep: "No em quedaré a dormir",
     giftsTitle: "Detalls 🎁",
