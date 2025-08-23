@@ -14,6 +14,26 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
 
   const respuesta = document.getElementById("respuesta");
 
+  if (!nombre) {
+        alert("Por favor, ingresa tu nombre.");
+        document.getElementById('nombre').focus();
+        return;
+    }
+
+    if (!asistencia) {
+        alert("Por favor, indica si asistirás.");
+        document.getElementById('asistencia').focus();
+        return;
+    }
+
+    if (!dormir) {
+        alert("Por favor, indica si te quedarás a dormir.");
+        // Mover scroll al componente de dormir
+        document.getElementById('dormir').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('dormir').focus();
+        return;
+    }
+
   emailjs.send("service_7wbtrnq", "template_nnx2o8q", {
     nombre: nombre,
     asistencia: asistencia,
