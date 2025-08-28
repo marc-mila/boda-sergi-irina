@@ -94,6 +94,15 @@ const dotsContainer = document.getElementById('gallery-dots');
 let currentIndex = 0;
 let slideInterval;
 
+// ✅ Preload de imágenes
+function preloadImages(urls) {
+  urls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+  });
+}
+preloadImages(galleryImages);
+
 // Número de imágenes visibles según pantalla
 function imagesPerSlide() {
   return window.innerWidth < 768 ? 1 : 3;
@@ -102,7 +111,7 @@ function imagesPerSlide() {
 // Crear los puntitos
 function createDots() {
   dotsContainer.innerHTML = '';
-  const slides = galleryImages.length; // un dot por cada imagen de inicio
+  const slides = galleryImages.length;
   for (let i = 0; i < slides; i++) {
     const dot = document.createElement('button');
     dot.className = 'w-3 h-3 rounded-full transition-colors';
@@ -116,7 +125,6 @@ function createDots() {
     dotsContainer.appendChild(dot);
   }
 }
-
 createDots();
 
 // Actualizar puntitos
@@ -143,6 +151,7 @@ function showSlide(startIndex) {
 
     setTimeout(() => {
       galleryEls[i].src = galleryImages[imgIndex];
+      galleryEls[i].loading = "lazy";   // 👈 Lazy loading
       galleryEls[i].classList.remove('opacity-0');
       galleryEls[i].classList.add('opacity-100');
     }, 300);
@@ -166,7 +175,6 @@ dotsContainer.addEventListener('click', (e) => {
     const index = parseInt(e.target.getAttribute('data-index'));
     showSlide(index);
 
-    // Resetear el intervalo
     clearInterval(slideInterval);
     startInterval();
   }
