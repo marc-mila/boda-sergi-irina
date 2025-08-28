@@ -71,22 +71,22 @@ toggleMusicBtn.addEventListener("click", () => {
 });
 
 const galleryImages = [
-  'fotos/foto1.jpg',
-  'fotos/foto2.jpg',
-  'fotos/foto3.jpg',
-  'fotos/foto4.jpg',
-  'fotos/foto5.jpg',
-  'fotos/foto6.jpg',
-  'fotos/foto7.jpg',
-  'fotos/foto8.jpg',
-  'fotos/foto9.jpg',
-  'fotos/foto10.jpg',
-  'fotos/foto11.jpg',
-  'fotos/foto12.jpg',
-  'fotos/foto13.jpg',
-  'fotos/foto14.jpg',
-  'fotos/foto15.jpg',
-  'fotos/foto16.jpg'
+  'fotos/foto1',
+  'fotos/foto2',
+  'fotos/foto3',
+  'fotos/foto4',
+  'fotos/foto5',
+  'fotos/foto6',
+  'fotos/foto7',
+  'fotos/foto8',
+  'fotos/foto9',
+  'fotos/foto10',
+  'fotos/foto11',
+  'fotos/foto12',
+  'fotos/foto13',
+  'fotos/foto14',
+  'fotos/foto15',
+  'fotos/foto16'
 ];
 
 const galleryEls = document.querySelectorAll(".gallery-img");
@@ -94,11 +94,13 @@ const dotsContainer = document.getElementById('gallery-dots');
 let currentIndex = 0;
 let slideInterval;
 
-// ✅ Preload de imágenes
+// ✅ Preload imágenes en WebP y fallback JPG
 function preloadImages(urls) {
   urls.forEach(url => {
-    const img = new Image();
-    img.src = url;
+    const imgWebP = new Image();
+    imgWebP.src = `${url}.webp`;
+    const imgJPG = new Image();
+    imgJPG.src = `${url}.jpg`;
   });
 }
 preloadImages(galleryImages);
@@ -140,6 +142,15 @@ function updateDots(index) {
   });
 }
 
+// Función para cargar imagen con fallback
+function loadImage(el, url) {
+  el.src = `${url}.webp`;
+  el.loading = "lazy";
+  el.onerror = () => {
+    el.src = `${url}.jpg`;
+  };
+}
+
 // Mostrar imágenes según índice de inicio
 function showSlide(startIndex) {
   const perSlide = imagesPerSlide();
@@ -150,8 +161,7 @@ function showSlide(startIndex) {
     galleryEls[i].classList.add('opacity-0');
 
     setTimeout(() => {
-      galleryEls[i].src = galleryImages[imgIndex];
-      galleryEls[i].loading = "lazy";   // 👈 Lazy loading
+      loadImage(galleryEls[i], galleryImages[imgIndex]);
       galleryEls[i].classList.remove('opacity-0');
       galleryEls[i].classList.add('opacity-100');
     }, 300);
