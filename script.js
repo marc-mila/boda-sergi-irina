@@ -71,12 +71,22 @@ toggleMusicBtn.addEventListener("click", () => {
 });
 
 const galleryImages = [
-  'fotos/1.jpg',
-  'fotos/2.jpg',
-  'fotos/3.jpg',
-  'fotos/1.jpg',
-  'fotos/2.jpg',
-  'fotos/3.jpg'
+  'fotos/foto1.jpg',
+  'fotos/foto2.jpg',
+  'fotos/foto3.jpg',
+  'fotos/foto4.jpg',
+  'fotos/foto5.jpg',
+  'fotos/foto6.jpg',
+  'fotos/foto7.jpg',
+  'fotos/foto8.jpg',
+  'fotos/foto9.jpg',
+  'fotos/foto10.jpg',
+  'fotos/foto11.jpg',
+  'fotos/foto12.jpg',
+  'fotos/foto13.jpg',
+  'fotos/foto14.jpg',
+  'fotos/foto15.jpg',
+  'fotos/foto16.jpg'
 ];
 
 const galleryEls = document.querySelectorAll(".gallery-img");
@@ -273,7 +283,7 @@ const translations = {
     dress3: "Si hace fresco, trae una chaqueta ligera",
     sleepTitle: "¿Quieres quedarte a dormir? 💤🏕️",
     sleep1: "Si te quedas, tenemos una sorpresita para ti...",
-    sleep2: "Te llegará un correo para confirmar tu estancia.",
+    sleep2: "Te llegará un whatsapp con más información para confirmar tu estancia.",
     willSleepQ: "¿Te quedarás?",
     yesSleep: "Me quedaré a dormir",
     noSleep: "No me quedaré a dormir",
@@ -311,7 +321,7 @@ const translations = {
     dress3: "Si refresca, porta una jaqueta lleugera",
     sleepTitle: "Vols quedar-te a dormir? 💤🏕️",
     sleep1: "Si et quedes, tenim una sorpreseta per a tu...",
-    sleep2: "T'arribarà un correu per confirmar la teva estada.",
+    sleep2: "T'arribarà un whatsapp amb més informació per confirmar la teva estada.",
     willSleepQ: "Et quedaràs?",
     yesSleep: "Em quedaré a dormir",
     noSleep: "No em quedaré a dormir",
