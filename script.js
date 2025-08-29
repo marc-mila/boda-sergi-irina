@@ -39,16 +39,18 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
     asistencia: asistencia,
     dormir: dormir
   })
-  .then(() => {
-    respuesta.textContent = `¡Gracias, ${nombre}! Hemos recibido tu confirmación 💌`;
+.then(() => {
+    const lang = localStorage.getItem("selectedLang") || "es";
+    respuesta.textContent = translations[lang].confirmationMessage.replace("{nombre}", nombre);
     respuesta.classList.remove("text-red-600");
     respuesta.classList.add("text-green-600");
-  }, (error) => {
+}, (error) => {
     console.error("Error al enviar con EmailJS:", error);
-    respuesta.textContent = "Hubo un error al enviar tu confirmación. Inténtalo más tarde.";
+    const lang = localStorage.getItem("selectedLang") || "es";
+    respuesta.textContent = translations[lang].confirmationError;
     respuesta.classList.remove("text-green-600");
     respuesta.classList.add("text-red-600");
-  });
+});
 
   this.reset();
 });
@@ -314,6 +316,8 @@ const translations = {
     infoText: "📞 Si tienes dudas, necesitas más información o quieres contactarnos sobre alguna alergia o intolerancia, contáctanos a los siguientes telefonos",
     contactInfo: "🤵🏻: 661109275 / 👰🏼‍♀️: 658197440",
     footerThanks: "Gracias por acompañarnos en este día tan especial 💕",
+    confirmationMessage: "¡Gracias, {nombre}! Hemos recibido tu confirmación 💌",
+    confirmationError: "Hubo un error al enviar tu confirmación. Inténtalo más tarde."
   },
   ca: {
     title: "Invitació de Casament d'Andrea i Sergi",
@@ -354,5 +358,7 @@ const translations = {
     infoText: "📞 Si tens dubtes, necessites més informació o vols contactar-nos sobre alguna al·lèrgia o intolerància, contacta'ns als següents telèfons",
     contactInfo: "🤵🏻: 661109275 / 👰🏼‍♀️: 658197440",
     footerThanks: "Gràcies per acompanyar-nos en aquest dia tan especial 💕",
+    confirmationMessage: "Gràcies, {nombre}! Hem rebut la teva confirmació 💌",
+    confirmationError: "Hi ha hagut un error en enviar la teva confirmació. Torna-ho a provar més tard."
   }
 };
